@@ -34,7 +34,7 @@ jobs:
         with:
           cumulusci-version: "${{ inputs.cumulusci-version }}"
           sfdx-version: "${{ inputs.sfdx-version }}"
-          tag: "${{ github.event.release.tag_name }}"
+          tag: "${{ inputs.tag }}"
           plan: "${{ inputs.plan }}"
           dry-run: "${{ inputs.dry-run }}"
           publish: "${{ inputs.publish }}"
