@@ -1,15 +1,16 @@
 name: Create Release Unpackaged
 on:
   workflow_call:
-    version:
-      required: true
-      type: string
-    cumulusci-version:
-      required: false
-      type: string
-    sfdx-version:
-      required: false
-      type: string
+    inputs:
+      version:
+        required: true
+        type: string
+      cumulusci-version:
+        required: false
+        type: string
+      sfdx-version:
+        required: false
+        type: string
 
 jobs:
   feature-test:
