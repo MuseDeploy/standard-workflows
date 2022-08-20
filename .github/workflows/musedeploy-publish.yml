@@ -32,6 +32,7 @@ jobs:
     steps:
       - uses: musedeploy/metadeploy-publish@main
         with:
+          cumulusci-service-metadeploy: "${{ secrets.cumulusci-service-metadeploy }}"
           cumulusci-version: "${{ inputs.cumulusci-version }}"
           sfdx-version: "${{ inputs.sfdx-version }}"
           tag: "${{ inputs.tag }}"
