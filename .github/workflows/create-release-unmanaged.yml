@@ -1,0 +1,21 @@
+name: Create Release
+on:
+  workflow_call:
+    version:
+      required: true
+      type: string
+    cumulusci-version:
+      required: false
+      type: string
+    sfdx-version:
+      required: false
+      type: string
+
+jobs:
+  feature-test:
+    name: "Create Release in GitHub"
+    uses: MuseDeploy/release-production-unmanaged@main
+    with:
+      version: ${{ inputs.version }}
+      cumulusci-version: ${{ inputs.cumulusci-version }}
+      sfdx-version: ${{ inputs.sfdx-version }}
