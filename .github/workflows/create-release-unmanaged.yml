@@ -1,4 +1,4 @@
-name: Create Release
+name: Create Release Unpackaged
 on:
   workflow_call:
     version:
@@ -14,8 +14,10 @@ on:
 jobs:
   feature-test:
     name: "Create Release in GitHub"
-    uses: MuseDeploy/release-production-unmanaged@main
-    with:
-      version: ${{ inputs.version }}
-      cumulusci-version: ${{ inputs.cumulusci-version }}
-      sfdx-version: ${{ inputs.sfdx-version }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: MuseDeploy/release-production-unmanaged@main
+        with:
+          version: ${{ inputs.version }}
+          cumulusci-version: ${{ inputs.cumulusci-version }}
+          sfdx-version: ${{ inputs.sfdx-version }}
