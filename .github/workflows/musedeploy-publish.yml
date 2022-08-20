@@ -21,9 +21,9 @@ on:
         required: false
         default: true
         type: boolean
-    secrets:
       cumulusci-service-metadeploy:
         required: true
+        type: string
 
 jobs:
   metadeploy-publish:
@@ -32,7 +32,7 @@ jobs:
     steps:
       - uses: musedeploy/metadeploy-publish@main
         with:
-          cumulusci-service-metadeploy: "${{ secrets.cumulusci-service-metadeploy }}"
+          cumulusci-service-metadeploy: "${{ inputs.cumulusci-service-metadeploy }}"
           cumulusci-version: "${{ inputs.cumulusci-version }}"
           sfdx-version: "${{ inputs.sfdx-version }}"
           tag: "${{ inputs.tag }}"
