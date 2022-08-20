@@ -1,0 +1,37 @@
+on:
+  workflow_call:
+    inputs:
+      cumulusci-version:
+        required: false
+        type: string
+      sfdx-version:
+        required: false
+        type: string
+      plan:
+        required: false
+        type: string
+      dry-run:
+        required: false
+        default: false
+        type: boolean
+      publish:
+        required: false
+        default: true
+        type: boolean
+    secrets:
+      dev-hub-auth-url:
+        required: true
+      cumulusci-service-metadeploy:
+        required: true
+
+jobs:
+  metadeploy-publish:
+    name: "Publish to MuseDeploy"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: musedeploy/metadeploy-publish@main
+        with:
+          dev-hub-auth-url: '${{ secrets.dev-hub-auth-url }}'
+          cumulusci-version: '${{ inputs.cumulusci-version }}'
+          sfdx-version: '${{ inputs.sfdx-version }}'
+          tag: '${{ github.release.tag }}'
