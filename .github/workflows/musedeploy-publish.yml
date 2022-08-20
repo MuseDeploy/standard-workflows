@@ -31,7 +31,10 @@ jobs:
     steps:
       - uses: musedeploy/metadeploy-publish@main
         with:
-          dev-hub-auth-url: '${{ secrets.dev-hub-auth-url }}'
-          cumulusci-version: '${{ inputs.cumulusci-version }}'
-          sfdx-version: '${{ inputs.sfdx-version }}'
-          tag: '${{ github.release.tag }}'
+          dev-hub-auth-url: "${{ secrets.dev-hub-auth-url }}"
+          cumulusci-version: "${{ inputs.cumulusci-version }}"
+          sfdx-version: "${{ inputs.sfdx-version }}"
+          tag: "${{ github.release.tag }}"
+          plan: "${{ inputs.plan }}"
+          dry-run: "${{ inputs.dry-run }}"
+          publish: "${{ inputs.publish }}"
