@@ -13,7 +13,7 @@ on:
         type: string
 
 jobs:
-  feature-test:
+  create-release:
     name: "Create Release in GitHub"
     runs-on: ubuntu-latest
     steps:
@@ -22,3 +22,17 @@ jobs:
           version: ${{ inputs.version }}
           cumulusci-version: ${{ inputs.cumulusci-version }}
           sfdx-version: ${{ inputs.sfdx-version }}
+      - uses: musedeploy/standard-workflows/.github/workflows/metadeploy-pub
+  publish-release:
+    name: "Publish Release to MuseDeploy"
+    needs:
+      - create-release
+    uses: musedeploy/standard-workflows/.github/workflows/metadeploy-publish.yml
+    secrets:
+      cumulusci-service-metadeploy: "${{ secrets.CUMULUSCI_SERVICE_METADEPLOY }}"
+    with:
+      version: ${{ inputs.version }}
+      cumulusci-version: ${{ inputs.cumulusci-version }}
+      sfdx-version: ${{ inputs.sfdx-version }}
+    
+        
