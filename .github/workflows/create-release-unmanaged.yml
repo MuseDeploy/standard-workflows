@@ -27,7 +27,7 @@ jobs:
     name: "Publish Release to MuseDeploy"
     needs:
       - create-release
-    uses: musedeploy/standard-workflows/.github/workflows/metadeploy-publish.yml@main
+    uses: musedeploy/standard-workflows/.github/workflows/musedeploy-publish.yml@main
     secrets:
       cumulusci-service-metadeploy: "${{ secrets.CUMULUSCI_SERVICE_METADEPLOY }}"
     with:
